@@ -14,7 +14,7 @@ https://marca-personal-2dz.pages.dev
 
 ## Propósito del sitio
 
-El objetivo principal del sitio es funcionar como una carta de presentación digital. A través de una interfaz breve, interactiva y visualmente atractiva, se muestra quién soy yo  Javier, qué áreas domino y qué tipo de soluciones me interesa construir.
+El objetivo principal del sitio es funcionar como una carta de presentación digital. A través de una interfaz breve, interactiva y visualmente atractiva, donde se muestra quién soy yo  Javier, qué áreas domino y qué tipo de soluciones me interesa construir.
 
 El portafolio se construye desde mi idea central o camino ninja:
 
@@ -109,11 +109,6 @@ Luego se ejecuta el servidor de desarrollo:
 npm run dev
 ```
 
-Astro entregará una URL local similar a:
-
-```txt
-http://localhost:4321
-```
 
 ## Construcción del proyecto
 
@@ -139,7 +134,5 @@ npm run preview
 ## Autor del portafolio
 
 **Javier Alexis Fernandez Yañez**
-Ingeniero Civil en Ciencias de Datos
-Universidad Tecnológica Metropolitana, UTEM
-Santiago, Chile
+
 
