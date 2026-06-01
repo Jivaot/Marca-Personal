@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "Javier Alexis Fernandez Yañez | Data Science & AI",
+  description = "Portafolio personal de Javier Alexis Fernandez Yañez, Ingeniero Civil en Ciencias de Datos. Proyectos de inteligencia artificial, NLP, visión computacional, deep learning y optimización.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050816" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <div class="page-noise" aria-hidden="true"></div>
+    <div class="page-glow" aria-hidden="true"></div>
+
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,65 @@
+---
+import { skills } from "../data/portfolio.js";
+
+const skillGroups = [
+  {
+    title: "Inteligencia Artificial",
+    description: "Modelos, aprendizaje automático y sistemas capaces de interpretar datos complejos.",
+    items: ["NLP", "YOLO", "Computer Vision", "Deep Learning", "IA aplicada"],
+  },
+  {
+    title: "Datos y desarrollo",
+    description: "Herramientas para procesar, estructurar y convertir información en soluciones.",
+    items: ["Python", "SQL", "ERP", "Análisis de datos", "Modelamiento"],
+  },
+  {
+    title: "Optimización",
+    description: "Estrategias para buscar mejores soluciones en problemas complejos.",
+    items: ["Programación genética", "Optimización heurística"],
+  },
+  {
+    title: "Mentalidad profesional",
+    description: "La parte humana detrás del código: criterio, disciplina y mejora continua.",
+    items: ["Resolución de problemas", "Pensamiento analítico", "Aprendizaje autónomo", "Disciplina"],
+  },
+];
+---
+
+<section id="habilidades" class="skills-section">
+  <div class="skills-intro">
+    <p class="section-kicker">03 · Stack técnico</p>
+
+    <h2>
+      Habilidades para construir, entrenar y optimizar sistemas.
+    </h2>
+
+    <p>
+      Mi stack combina ciencia de datos, inteligencia artificial, desarrollo,
+      pensamiento algorítmico y una mentalidad enfocada en aprender desde el error.
+    </p>
+  </div>
+
+  <div class="skills-layout">
+    <div class="skills-orbit" aria-label="Listado general de habilidades">
+      {skills.map((skill) => (
+        <span>{skill}</span>
+      ))}
+    </div>
+
+    <div class="skills-groups">
+      {skillGroups.map((group) => (
+        <article class="skill-card">
+          <h3>{group.title}</h3>
+
+          <p>{group.description}</p>
+
+          <div class="skill-list">
+            {group.items.map((item) => (
+              <span>{item}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

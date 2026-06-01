@@ -1,0 +1,171 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+  profile,
+  identityStats,
+  systems,
+  capabilities,
+  contact,
+} from "../data/portfolio.js";
+---
+
+<Layout
+  title="Javier Alexis Fernandez Yañez | Portafolio"
+  description="Portafolio personal de Javier Alexis Fernandez Yañez, Ingeniero Civil en Ciencias de Datos. Inteligencia artificial, ciencia de datos, visión computacional, NLP y optimización."
+>
+  <main class="app-page">
+    <section class="app-shell" aria-label="Portafolio interactivo de Javier Fernandez">
+      <input class="panel-input" type="radio" name="panel" id="panel-home" checked />
+      <input class="panel-input" type="radio" name="panel" id="panel-about" />
+      <input class="panel-input" type="radio" name="panel" id="panel-projects" />
+      <input class="panel-input" type="radio" name="panel" id="panel-skills" />
+      <input class="panel-input" type="radio" name="panel" id="panel-contact" />
+
+      <aside class="identity-panel">
+        <div class="identity-top">
+          <p class="micro-label">Personal Portfolio</p>
+          <span>{profile.initials}</span>
+        </div>
+
+        <div class="avatar-wrap">
+          <div class="avatar-ring" aria-hidden="true"></div>
+
+          <img
+            src="/avatar.png"
+            alt="Avatar profesional de Javier Alexis Fernandez Yañez"
+          />
+        </div>
+
+        <div class="identity-info">
+          <p>{profile.role}</p>
+          <h1>{profile.shortName}</h1>
+          <span>{profile.title}</span>
+        </div>
+
+        <div class="identity-footer">
+          <span>{profile.institution}</span>
+          <span>{profile.location}</span>
+        </div>
+      </aside>
+
+      <section class="stage-panel">
+        <nav class="app-nav" aria-label="Navegación del portafolio">
+          <label for="panel-home">Inicio</label>
+          <label for="panel-about">Sobre mí</label>
+          <label for="panel-projects">Proyectos</label>
+          <label for="panel-skills">Skills</label>
+          <label for="panel-contact">Contacto</label>
+        </nav>
+
+        <div class="content-window">
+          <article class="content-panel home-panel">
+            <p class="panel-index">00 / Inicio</p>
+
+            <h2>{profile.heroTitle}</h2>
+
+            <p class="lead-text">
+              {profile.heroSubtitle}
+            </p>
+
+            <div class="quick-stats">
+              {identityStats.map((item) => (
+                <div>
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article class="content-panel about-panel">
+            <p class="panel-index">01 / Sobre mí</p>
+
+            <h2>Construyo criterio desde datos, error y disciplina.</h2>
+
+            <p class="lead-text">
+              {profile.about}
+            </p>
+
+            <blockquote>
+              {profile.quote}
+            </blockquote>
+          </article>
+
+          <article class="content-panel projects-panel">
+            <p class="panel-index">02 / Proyectos</p>
+
+            <h2>Sistemas seleccionados.</h2>
+
+            <div class="systems-grid">
+              {systems.slice(0, 6).map((system) => (
+                <article class="system-item">
+                  <span class="system-number">{system.number}</span>
+
+                  <div>
+                    <h3>{system.name}</h3>
+                    <p>{system.area}</p>
+                    <small>{system.role}</small>
+
+                    <div class="system-tags">
+                      {system.tags.map((tag) => (
+                        <span>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </article>
+
+          <article class="content-panel skills-panel">
+            <p class="panel-index">03 / Skills</p>
+
+            <h2>Capacidades técnicas.</h2>
+
+            <div class="capabilities-grid">
+              {capabilities.map((capability) => (
+                <article class="capability-card">
+                  <h3>{capability.title}</h3>
+
+                  <div>
+                    {capability.items.map((item) => (
+                      <span>{item}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </article>
+
+          <article class="content-panel contact-panel">
+            <p class="panel-index">04 / Contacto</p>
+
+            <h2>Construyamos algo inteligente.</h2>
+
+            <p class="lead-text">
+              Estoy disponible para colaborar en proyectos de ciencia de datos,
+              inteligencia artificial, visión computacional, automatización y optimización.
+            </p>
+
+            <div class="contact-list">
+              <a href={`mailto:${contact.email}`}>
+                <span>Correo</span>
+                <strong>{contact.email}</strong>
+              </a>
+
+              <a href={contact.github} target="_blank" rel="noreferrer">
+                <span>GitHub</span>
+                <strong>Ver repositorios</strong>
+              </a>
+
+              <a href={contact.linkedin}>
+                <span>LinkedIn</span>
+                <strong>Próximamente</strong>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,107 @@
+---
+import { profile } from "../data/portfolio.js";
+---
+
+<section id="inicio" class="hero-section">
+  <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+
+  <div class="hero-layout">
+    <div class="hero-content">
+      <p class="hero-kicker">
+        Data Science · Artificial Intelligence · Optimization
+      </p>
+
+      <h1 class="hero-title">
+        {profile.heroTitle}
+      </h1>
+
+      <p class="hero-description">
+        {profile.heroSubtitle}
+      </p>
+
+      <div class="hero-actions">
+        <a href="#proyectos" class="button-primary">
+          Explorar proyectos
+        </a>
+
+        <a href="#perfil" class="button-secondary">
+          Conocer mi perfil
+        </a>
+      </div>
+    </div>
+
+    <aside class="ai-panel" aria-label="Panel visual del portafolio de inteligencia artificial">
+      <div class="ai-panel-header">
+        <div class="window-dots" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+       <p>javier_portfolio.log</p>
+      </div>
+
+      <div class="ai-panel-body">
+        <p>
+          <span>name</span>
+          {profile.name}
+        </p>
+
+        <p>
+          <span>profile</span>
+          {profile.title}
+        </p>
+
+        <p>
+          <span>location</span>
+          {profile.location}
+        </p>
+
+        <p>
+          <span>status</span>
+          learning_from_failure
+        </p>
+
+        <div class="system-card">
+          <div class="system-card-top">
+            <p>NLP SEARCH ENGINE</p>
+            <strong>TechSalud</strong>
+          </div>
+
+          <div class="progress-line">
+            <span style="width: 94%"></span>
+          </div>
+        </div>
+
+        <div class="system-card">
+          <div class="system-card-top">
+            <p>COMPUTER VISION MODEL</p>
+            <strong>YOLO / STI</strong>
+          </div>
+
+          <div class="progress-line progress-purple">
+            <span style="width: 88%"></span>
+          </div>
+        </div>
+
+        <div class="system-grid">
+          <div>
+            <strong>06</strong>
+            <span>proyectos</span>
+          </div>
+
+          <div>
+            <strong>∞</strong>
+            <span>intentos</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span></span>
+    Scroll
+  </div>
+</section>

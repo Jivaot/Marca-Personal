@@ -1,0 +1,38 @@
+---
+import { contact } from "../data/portfolio.js";
+---
+
+<section id="contacto" class="contact-section">
+  <article class="contact-card">
+    <div class="contact-content">
+      <p class="section-kicker">05 · Contacto</p>
+
+      <h2>
+        Construyamos algo inteligente.
+      </h2>
+
+      <p>
+        Estoy disponible para colaborar en proyectos de ciencia de datos,
+        inteligencia artificial, automatización, visión computacional,
+        optimización y desarrollo de soluciones basadas en datos.
+      </p>
+    </div>
+
+    <div class="contact-links" aria-label="Enlaces de contacto profesional">
+      <a href={`mailto:${contact.email}`}>
+        <span>Correo</span>
+        <strong>{contact.email}</strong>
+      </a>
+
+      <a href={contact.github} target="_blank" rel="noreferrer">
+        <span>GitHub</span>
+        <strong>Ver repositorios</strong>
+      </a>
+
+      <a href={contact.linkedin} target="_blank" rel="noreferrer">
+        <span>LinkedIn</span>
+        <strong>Conectar profesionalmente</strong>
+      </a>
+    </div>
+  </article>
+</section>
