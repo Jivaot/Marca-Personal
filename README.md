@@ -125,12 +125,6 @@ npm run preview
 ```
 
 
-## Contacto
-
-* Correo: [jfernandezy@utem.cl](mailto:jfernandezy@utem.cl)
-* GitHub: https://github.com/Jivaot
-* LinkedIn: pendiente
-
 ## Autor del portafolio
 
 **Javier Alexis Fernandez Yañez**
