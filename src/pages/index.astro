@@ -13,121 +13,158 @@ import {
   title="Javier Alexis Fernandez Yañez | Portafolio"
   description="Portafolio personal de Javier Alexis Fernandez Yañez, Ingeniero Civil en Ciencias de Datos. Inteligencia artificial, ciencia de datos, visión computacional, NLP y optimización."
 >
-  <main class="app-page">
-    <section class="app-shell" aria-label="Portafolio interactivo de Javier Fernandez">
-      <input class="panel-input" type="radio" name="panel" id="panel-home" checked />
-      <input class="panel-input" type="radio" name="panel" id="panel-about" />
-      <input class="panel-input" type="radio" name="panel" id="panel-projects" />
-      <input class="panel-input" type="radio" name="panel" id="panel-skills" />
-      <input class="panel-input" type="radio" name="panel" id="panel-contact" />
+  <main class="site-page">
+    <input class="panel-input" type="radio" name="panel" id="panel-home" checked />
+    <input class="panel-input" type="radio" name="panel" id="panel-about" />
+    <input class="panel-input" type="radio" name="panel" id="panel-projects" />
+    <input class="panel-input" type="radio" name="panel" id="panel-skills" />
+    <input class="panel-input" type="radio" name="panel" id="panel-contact" />
 
-      <aside class="identity-panel">
-        <div class="identity-top">
-          <p class="micro-label">Personal Portfolio</p>
-          <span>{profile.initials}</span>
-        </div>
+    <header class="premium-navbar">
+      <a href="#" class="nav-brand" aria-label="Inicio del portafolio">
+        <span>J</span>
+        <strong>Javier Fernandez</strong>
+      </a>
 
-        <div class="avatar-wrap">
-          <div class="avatar-ring" aria-hidden="true"></div>
+      <nav class="nav-tabs" aria-label="Navegación principal">
+        <label for="panel-home">Inicio</label>
+        <label for="panel-about">Sobre mí</label>
+        <label for="panel-projects">Proyectos</label>
+        <label for="panel-skills">Skills</label>
+        <label for="panel-contact">Contacto</label>
+      </nav>
+    </header>
 
+    <section class="hero-layout" aria-label="Portafolio de Javier Fernandez">
+      <aside class="hero-profile">
+        <div class="avatar-card">
           <img
             src="/avatar.png"
             alt="Avatar profesional de Javier Alexis Fernandez Yañez"
           />
         </div>
 
-        <div class="identity-info">
+        <div class="profile-mini">
           <p>{profile.role}</p>
           <h1>{profile.shortName}</h1>
           <span>{profile.title}</span>
         </div>
 
-        <div class="identity-footer">
+        <div class="profile-meta">
           <span>{profile.institution}</span>
           <span>{profile.location}</span>
         </div>
       </aside>
 
-      <section class="stage-panel">
-        <nav class="app-nav" aria-label="Navegación del portafolio">
-          <label for="panel-home">Inicio</label>
-          <label for="panel-about">Sobre mí</label>
-          <label for="panel-projects">Proyectos</label>
-          <label for="panel-skills">Skills</label>
-          <label for="panel-contact">Contacto</label>
-        </nav>
+      <section class="content-area">
+        <article class="content-panel home-panel">
+          <p class="section-label">00 / Inicio</p>
 
-        <div class="content-window">
-          <article class="content-panel home-panel">
-            <p class="panel-index">00 / Inicio</p>
+          <h2>{profile.heroTitle}</h2>
 
-            <h2>{profile.heroTitle}</h2>
+          <p class="lead-text">
+            {profile.heroSubtitle}
+          </p>
 
-            <p class="lead-text">
-              {profile.heroSubtitle}
-            </p>
+          <div class="quick-stats">
+            {identityStats.map((item) => (
+              <div>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </article>
 
-            <div class="quick-stats">
-              {identityStats.map((item) => (
-                <div>
-                  <strong>{item.value}</strong>
-                  <span>{item.label}</span>
-                </div>
-              ))}
-            </div>
-          </article>
+        <article class="content-panel about-panel">
+          <p class="section-label">01 / Sobre mí</p>
 
-          <article class="content-panel about-panel">
-            <p class="panel-index">01 / Sobre mí</p>
+          <h2>Datos, disciplina y mejora continua.</h2>
 
-            <h2>Construyo criterio desde datos, error y disciplina.</h2>
+          <p class="lead-text">
+            {profile.about}
+          </p>
 
-            <p class="lead-text">
-              {profile.about}
-            </p>
+          <blockquote>
+            {profile.quote}
+          </blockquote>
+        </article>
 
-            <blockquote>
-              {profile.quote}
-            </blockquote>
-          </article>
+        <article class="content-panel projects-panel">
+          <p class="section-label">02 / Proyectos</p>
 
-          <article class="content-panel projects-panel">
-            <p class="panel-index">02 / Proyectos</p>
+          <h2>Sistemas seleccionados.</h2>
 
-            <h2>Sistemas seleccionados.</h2>
-
-            <div class="systems-grid">
-              {systems.slice(0, 6).map((system) => (
-                <article class="system-item">
-                  <span class="system-number">{system.number}</span>
-
-                  <div>
-                    <h3>{system.name}</h3>
+          <div class="gallery-shell" data-gallery="projects">
+            <div class="gallery-track">
+              {systems.map((system, index) => (
+                <article
+                  class={`gallery-card project-gallery-card ${
+                    index === 0 ? "is-active" : ""
+                  }`}
+                >
+                  <div class="gallery-card-top">
+                    <span>{system.number}</span>
                     <p>{system.area}</p>
-                    <small>{system.role}</small>
+                  </div>
 
-                    <div class="system-tags">
-                      {system.tags.map((tag) => (
-                        <span>{tag}</span>
-                      ))}
-                    </div>
+                  <h3>{system.name}</h3>
+
+                  <p>{system.description}</p>
+
+                  <div class="gallery-role">
+                    <span>Mi rol</span>
+                    <strong>{system.role}</strong>
+                  </div>
+
+                  <div class="system-tags">
+                    {system.tags.map((tag) => (
+                      <span>{tag}</span>
+                    ))}
                   </div>
                 </article>
               ))}
             </div>
-          </article>
 
-          <article class="content-panel skills-panel">
-            <p class="panel-index">03 / Skills</p>
+            <div class="gallery-controls">
+              <button type="button" data-prev="projects">
+                ← Anterior
+              </button>
 
-            <h2>Capacidades técnicas.</h2>
+              <div class="gallery-counter" aria-label="Contador de proyectos">
+                <span data-current="projects">01</span>
+                <span>/</span>
+                <span>{String(systems.length).padStart(2, "0")}</span>
+              </div>
 
-            <div class="capabilities-grid">
-              {capabilities.map((capability) => (
-                <article class="capability-card">
+              <button type="button" data-next="projects">
+                Siguiente →
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-panel skills-panel">
+          <p class="section-label">03 / Skills</p>
+
+          <h2>Capacidades técnicas.</h2>
+
+          <div class="gallery-shell" data-gallery="skills">
+            <div class="gallery-track">
+              {capabilities.map((capability, index) => (
+                <article
+                  class={`gallery-card skill-gallery-card ${
+                    index === 0 ? "is-active" : ""
+                  }`}
+                >
+                  <p class="skill-count">
+                    {String(index + 1).padStart(2, "0")} /{" "}
+                    {String(capabilities.length).padStart(2, "0")}
+                  </p>
+
                   <h3>{capability.title}</h3>
 
-                  <div>
+                  <div class="skill-tags-large">
                     {capability.items.map((item) => (
                       <span>{item}</span>
                     ))}
@@ -135,36 +172,53 @@ import {
                 </article>
               ))}
             </div>
-          </article>
 
-          <article class="content-panel contact-panel">
-            <p class="panel-index">04 / Contacto</p>
+            <div class="gallery-controls">
+              <button type="button" data-prev="skills">
+                ← Anterior
+              </button>
 
-            <h2>Construyamos algo inteligente.</h2>
+              <div class="gallery-counter" aria-label="Contador de habilidades">
+                <span data-current="skills">01</span>
+                <span>/</span>
+                <span>{String(capabilities.length).padStart(2, "0")}</span>
+              </div>
 
-            <p class="lead-text">
-              Estoy disponible para colaborar en proyectos de ciencia de datos,
-              inteligencia artificial, visión computacional, automatización y optimización.
-            </p>
-
-            <div class="contact-list">
-              <a href={`mailto:${contact.email}`}>
-                <span>Correo</span>
-                <strong>{contact.email}</strong>
-              </a>
-
-              <a href={contact.github} target="_blank" rel="noreferrer">
-                <span>GitHub</span>
-                <strong>Ver repositorios</strong>
-              </a>
-
-              <a href={contact.linkedin}>
-                <span>LinkedIn</span>
-                <strong>Próximamente</strong>
-              </a>
+              <button type="button" data-next="skills">
+                Siguiente →
+              </button>
             </div>
-          </article>
-        </div>
+          </div>
+        </article>
+
+        <article class="content-panel contact-panel">
+          <p class="section-label">04 / Contacto</p>
+
+          <h2>Construyamos algo inteligente.</h2>
+
+          <p class="lead-text">
+            Estoy disponible para colaborar en proyectos de ciencia de datos,
+            inteligencia artificial, visión computacional, automatización y
+            optimización.
+          </p>
+
+          <div class="contact-list">
+            <a href={`mailto:${contact.email}`}>
+              <span>Correo</span>
+              <strong>{contact.email}</strong>
+            </a>
+
+            <a href={contact.github} target="_blank" rel="noreferrer">
+              <span>GitHub</span>
+              <strong>Ver repositorios</strong>
+            </a>
+
+            <a href={contact.linkedin}>
+              <span>LinkedIn</span>
+              <strong>Próximamente</strong>
+            </a>
+          </div>
+        </article>
       </section>
     </section>
   </main>
