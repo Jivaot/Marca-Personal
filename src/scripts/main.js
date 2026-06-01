@@ -6,15 +6,23 @@ import { initTiltEffects } from "./tiltEffects.js";
 import { initParallax } from "./parallax.js";
 import { initGallery } from "./gallery.js";
 
-const prefersReducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches;
+function startExperience() {
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-initLenisScroll({ prefersReducedMotion });
-initShaderBackground({ prefersReducedMotion });
-initPhysicsCursor();
-initPanelTransitions();
-initTiltEffects();
-initParallax({ prefersReducedMotion });
-initGallery("projects");
-initGallery("skills");
+  initLenisScroll({ prefersReducedMotion });
+  initShaderBackground({ prefersReducedMotion });
+  initPhysicsCursor();
+  initPanelTransitions();
+  initGallery("projects");
+  initGallery("skills");
+  initTiltEffects();
+  initParallax({ prefersReducedMotion });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startExperience);
+} else {
+  startExperience();
+}

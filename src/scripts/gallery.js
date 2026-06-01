@@ -18,22 +18,22 @@ export function initGallery(name) {
     return String(number).padStart(2, "0");
   }
 
-  function setInitialState() {
+  function setCardState() {
     cards.forEach((card, index) => {
-      const isActive = index === currentIndex;
+      const active = index === currentIndex;
 
-      card.classList.toggle("is-active", isActive);
-      card.setAttribute("aria-hidden", String(!isActive));
+      card.classList.toggle("is-active", active);
+      card.setAttribute("aria-hidden", String(!active));
 
       gsap.set(card, {
-        autoAlpha: isActive ? 1 : 0,
-        visibility: isActive ? "visible" : "hidden",
-        pointerEvents: isActive ? "auto" : "none",
-        x: isActive ? 0 : 80,
-        scale: isActive ? 1 : 0.94,
-        rotateY: isActive ? 0 : -12,
-        filter: isActive ? "blur(0px)" : "blur(12px)",
-        zIndex: isActive ? 3 : 1,
+        autoAlpha: active ? 1 : 0,
+        visibility: active ? "visible" : "hidden",
+        pointerEvents: active ? "auto" : "none",
+        x: active ? 0 : 80,
+        scale: active ? 1 : 0.94,
+        rotateY: active ? 0 : -12,
+        filter: active ? "blur(0px)" : "blur(12px)",
+        zIndex: active ? 3 : 1,
       });
     });
 
@@ -42,17 +42,20 @@ export function initGallery(name) {
     }
   }
 
-  function goToSlide(nextIndex, direction = "next") {
-    if (isAnimating || nextIndex === currentIndex) return;
+  function moveTo(nextIndex, direction) {
+    if (isAnimating) return;
 
     isAnimating = true;
 
     const currentCard = cards[currentIndex];
     const nextCard = cards[nextIndex];
 
-    const exitX = direction === "next" ? -70 : 70;
+    const exitX = direction === "next" ? -80 : 80;
     const enterX = direction === "next" ? 90 : -90;
     const enterRotate = direction === "next" ? -12 : 12;
+    const exitRotate = direction === "next" ? 12 : -12;
+
+    gsap.killTweensOf(cards);
 
     cards.forEach((card) => {
       if (card !== currentCard && card !== nextCard) {
@@ -71,8 +74,6 @@ export function initGallery(name) {
     nextCard.classList.add("is-active");
     nextCard.setAttribute("aria-hidden", "false");
 
-    gsap.killTweensOf([currentCard, nextCard]);
-
     gsap.set(nextCard, {
       autoAlpha: 0,
       visibility: "visible",
@@ -85,9 +86,6 @@ export function initGallery(name) {
     });
 
     const timeline = gsap.timeline({
-      defaults: {
-        ease: "power4.out",
-      },
       onComplete: () => {
         currentCard.classList.remove("is-active");
         currentCard.setAttribute("aria-hidden", "true");
@@ -104,7 +102,9 @@ export function initGallery(name) {
           visibility: "visible",
           pointerEvents: "auto",
           x: 0,
+          y: 0,
           scale: 1,
+          rotateX: 0,
           rotateY: 0,
           filter: "blur(0px)",
           zIndex: 3,
@@ -126,9 +126,10 @@ export function initGallery(name) {
         autoAlpha: 0,
         x: exitX,
         scale: 0.94,
-        rotateY: direction === "next" ? 12 : -12,
+        rotateY: exitRotate,
         filter: "blur(14px)",
         duration: 0.42,
+        ease: "power3.inOut",
       },
       0
     );
@@ -142,6 +143,7 @@ export function initGallery(name) {
         rotateY: 0,
         filter: "blur(0px)",
         duration: 0.62,
+        ease: "power4.out",
       },
       0.08
     );
@@ -149,13 +151,13 @@ export function initGallery(name) {
 
   nextButton?.addEventListener("click", () => {
     const nextIndex = (currentIndex + 1) % cards.length;
-    goToSlide(nextIndex, "next");
+    moveTo(nextIndex, "next");
   });
 
   prevButton?.addEventListener("click", () => {
     const nextIndex = (currentIndex - 1 + cards.length) % cards.length;
-    goToSlide(nextIndex, "prev");
+    moveTo(nextIndex, "prev");
   });
 
-  setInitialState();
+  setCardState();
 }

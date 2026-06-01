@@ -706,19 +706,13 @@ blockquote {
   padding-left: 16px;
 }
 
-.gallery-role span {
-  display: block;
-  color: var(--muted);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-}
-
-.gallery-role strong {
-  display: block;
-  margin-top: 6px;
-  color: white;
-  line-height: 1.45;
+.project-focus {
+  margin: 16px 0 0;
+  color: rgba(248, 250, 252, 0.88);
+  line-height: 1.55;
+  font-size: 0.95rem;
+  border-left: 2px solid rgba(34, 211, 238, 0.75);
+  padding-left: 16px;
 }
 
 .system-tags {
